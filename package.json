@@ -1,0 +1,35 @@
+{
+  "name": "mcp-reinvent-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP Demo for AWS re:Invent Conference Planning",
+  "scripts": {
+    "start": "node servers/proxy-server-llm.js",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "node servers/proxy-server-llm.js",
+    "start:servers": "concurrently \"node servers/reinvent-schedule-server.js\" \"node servers/proxy-server-llm.js\"",
+    "start:demo": "concurrently \"node servers/proxy-server-llm.js\" \"cd frontend && npm start\"",
+    "dev": "cd frontend && npm run dev",
+    "install:all": "npm install && cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test:llm": "node test-bedrock.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-agent": "^3.918.0",
+    "@aws-sdk/client-bedrock-agent-runtime": "^3.918.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.918.0",
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "axios": "^1.6.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
+    "express": "^4.18.2",
+    "mammoth": "^1.11.0",
+    "sqlite3": "^5.1.6",
+    "strands-agents": "^0.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
